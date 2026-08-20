@@ -1,10 +1,13 @@
 name = "KK"
 version = "0.1.0"
-defaultTargets = ["kk"]
+defaultTargets = ["KK"]
 
 [[lean_lib]]
 name = "KK"
+roots = ["KK"]
 
-[[lean_exe]]
-name = "kk"
-root = "Main"
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4.git"
+rev = "master"
