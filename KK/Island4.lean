@@ -61,6 +61,7 @@ example
   -- Hint: First show that `a` is a knave:
   -- if `a` were normal, then neither `b` nor `c` could be a knave;
   -- then show that `b` is normal.
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -81,6 +82,7 @@ example
   -- Hint: first show that `b` is normal;
   -- then determine the two possible role assignments
   -- for `a` and `c`, and split on those.
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 

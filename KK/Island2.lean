@@ -43,6 +43,7 @@ example (hB : b said (a said isKnave a))
     (hC : c said isKnave b) :
     isKnave b ∧ isKnight c := by
   -- Hint: first show that `b` is a knave.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -66,6 +67,7 @@ example : ∃ w : World Islander,
   --       | c => True/False }
   -- ```
   -- with appropriate choices for True/False.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -80,6 +82,7 @@ example : ∃ w : World Islander,
       b said[w] (a said[w] (isKnave[w] a)) ∧
       c said[w] (isKnave[w] b) ∧
       isKnave[w] a := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -107,6 +110,7 @@ example
   -- Hint: first show that `b` is a knave:
   -- assume that `b` is a knight and derive a contradiction by proving that
   -- `c` then must be a knave and splitting on whether `a` is a knight.
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -121,6 +125,7 @@ example : ∃ w : World Islander,
       b said[w] (a said[w] (exactlyOneKnight w)) ∧
       c said[w] (isKnave[w] b) ∧
       isKnight[w] a := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -135,6 +140,7 @@ example : ∃ w : World Islander,
       b said[w] (a said[w] (exactlyOneKnight w)) ∧
       c said[w] (isKnave[w] b) ∧
       isKnave[w] a := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 

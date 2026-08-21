@@ -39,6 +39,7 @@ then `a` must be a knight and `b` must be a knave.
 example (hA : a said isKnave b) (hB : b said (isKnight a ∧ isKnight b)) :
     isKnave b ∧ isKnight a := by
   -- Hint: first show that `b` is a knave.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -51,6 +52,7 @@ From Smullyan (1978): Puzzle 28.
 example (hA : a said (isKnave a ∨ isKnave b)) :
     isKnight a ∧ isKnave b := by
   -- Hint: use `knight_and_of_said_knave_or`
+  -- Difficulty: very easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -63,6 +65,7 @@ From Smullyan (1978): Puzzle 29.
 example (hA : a said (isKnave a ∨ isKnight b)) :
     isKnight a ∧ isKnight b := by
   -- Hint: use `knight_and_of_said_knave_or`
+  -- Difficulty: very easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -75,6 +78,7 @@ From Smullyan (1978): Puzzle 33.
 example (hA : a said (isKnave a ∧ isKnight b)) :
     isKnave a ∧ isKnave b := by
   -- Hint: use `knave_and_not_of_said_knave_and`
+  -- Difficulty: very easy
   -- [FILL IN THE PROOF]
   sorry
 

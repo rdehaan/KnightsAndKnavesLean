@@ -112,36 +112,42 @@ theorem not_knave_of_normal (h : isNormal w p) : ¬ isKnave w p := by
 /-- A non-normal is either a knight or a knave. -/
 theorem knight_or_knave_of_not_normal (h : ¬ isNormal w p) :
     isKnight w p ∨ isKnave w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- A non-knave is either a knight or a normal. -/
 theorem knight_or_normal_of_not_knave (h : ¬ isKnave w p) :
     isKnight w p ∨ isNormal w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- A non-knight is either a knave or a normal. -/
 theorem knave_or_normal_of_not_knight (h : ¬ isKnight w p) :
     isKnave w p ∨ isNormal w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- A non-knight and non-knave is a normal. -/
 theorem normal_of_not_knight_of_not_knave
     (hk : ¬ isKnight w p) (hn : ¬ isKnave w p) : isNormal w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- A non-knight and non-normal is a knave. -/
 theorem knave_of_not_knight_of_not_normal
     (hk : ¬ isKnight w p) (hn : ¬ isNormal w p) : isKnave w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- A non-knave and non-normal is a knight. -/
 theorem knight_of_not_knave_of_not_normal
     (hk : ¬ isKnave w p) (hn : ¬ isNormal w p) : isKnight w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -163,18 +169,21 @@ are a knight.
 -/
 theorem said_iff_of_not_normal (hn : ¬ isNormal w p) :
     said w p Q ↔ (isKnight w p ↔ Q) := by
+  -- Difficulty: very easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- If a non-normal person makes a true statement, they are a knight. -/
 theorem knight_of_said_of_truth_of_not_normal
     (h : said w p Q) (hQ : Q) (hn : ¬ isNormal w p) : isKnight w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- If a non-normal person makes a false statement, they are a knave. -/
 theorem knave_of_said_of_false_of_not_normal
     (h : said w p Q) (hQ : ¬ Q) (hn : ¬ isNormal w p) : isKnave w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -193,6 +202,7 @@ then they are normal.
 theorem normal_of_tells_truth_and_lies
     (hTrue : tellsTruth w p Q) (hFalse : lies w p R) :
     isNormal w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -217,6 +227,7 @@ then they are either a normal or a knight. -/
 theorem normal_or_knight_of_said_of_truth
     (h : said w p Q) (hQ : Q) :
     isNormal w p ∨ isKnight w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -225,6 +236,7 @@ then they are either a normal or a knave. -/
 theorem normal_or_knave_of_said_of_false
     (h : said w p Q) (hQ : ¬ Q) :
     isNormal w p ∨ isKnave w p := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -235,12 +247,14 @@ theorem normal_said (hp : isNormal w p) : said w p Q :=
 /-- A knight may make any true statement. -/
 theorem knight_said_of_truth (hp : isKnight w p) (hQ : Q) :
     said w p Q := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
 /-- A knave may make any false statement. -/
 theorem knave_said_of_false (hp : isKnave w p) (hQ : ¬ Q) :
     said w p Q := by
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 

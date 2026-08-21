@@ -50,6 +50,7 @@ example
     (¬ isKnight b ∧ ¬ isKnight a) := by
   -- Hint: first prove that `a` is not a knight;
   -- then split on whether `b` is a knight.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -66,6 +67,7 @@ example
     (isNormal a ∨ isNormal b) := by
   -- Hint: argue by contradiction, and suppose that neither is normal;
   -- then split on whether `b` is a knight or a knave.
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -83,6 +85,7 @@ example
     ¬ hasLowerRank w a b ∧ ¬ isKnight a ∧ ¬ isKnave b := by
   -- Hint: start with showing that `a` does not have lower rank than `b`
   -- by splitting on the three possible roles of both.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -97,8 +100,9 @@ example : ∃ w : World Islander,
     a said[w] (hasLowerRank w a b) ∧
     b said[w] (¬ hasLowerRank w a b) ∧
     isNormal[w] a ∧ isNormal[w] b := by
-  refine ⟨{ role := fun | a => .normal | b => .normal }, ?_⟩
-  rank_simp_all
+  -- Difficulty: easy
+  -- [FILL IN THE PROOF]
+  sorry
 
 /--
 If `a` and `b` are either both normal or both non-normal,
@@ -114,6 +118,7 @@ example
     (hB : b said (¬ isNormal a)) :
     (isNormal a ∧ isNormal b) ∨ (isKnight a ∧ isKnight b) := by
   -- Hint: split on whether `a` is normal.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 

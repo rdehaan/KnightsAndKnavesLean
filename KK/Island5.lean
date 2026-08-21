@@ -40,6 +40,7 @@ From Smullyan (1978): Puzzle 158.
 theorem isKnight_of_answered_bal_to_bal_means_yes
     (h : answeredWith w L p (wordMeansYes L bal) bal) :
     isKnight p := by
+  -- Difficulty: very easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -52,6 +53,7 @@ theorem answer_to_are_you_a_knight_means_yes {actual : Reply}
     (h : answeredWith w L p (isKnight p) actual) :
     wordMeansYes L actual := by
   -- Hint: split on the yes-word and on the actual answer.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -76,6 +78,7 @@ example (h : answeredWith w L p (wordMeansYes L bal) bal) :
       answersBalToBalMeansYes w LDa p := by
   -- Hint: first show that the speaker is a knight;
   -- then use `refine ⟨{yesWord := bal}, {yesWord := da}, rfl, rfl, ?_, ?_⟩`
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -91,6 +94,7 @@ example {actual : Reply}
     (actual = bal ↔ isKnight p) ∧
     (actual = da ↔ isKnave p) := by
   -- Hint: split on the yes-word and on the actual answer.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -104,6 +108,7 @@ example {actual : Reply}
     (h : answeredWith w L p (isKnight p ↔ wordMeansYes L bal) actual) :
     actual = bal := by
   -- Hint: split on the yes-word and on the actual answer.
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 
@@ -119,6 +124,7 @@ example {goldOnIsland : Prop} {actual : Reply}
     (h : answeredWith w L p (answeredWith w L p goldOnIsland bal) actual) :
     goldOnIsland ↔ actual = bal :=
   -- Hint: use `response_bal_iff`
+  -- Difficulty: very easy
   -- [FILL IN THE PROOF]
   by
     sorry
