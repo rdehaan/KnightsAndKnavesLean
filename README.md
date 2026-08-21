@@ -9,7 +9,10 @@ The exercises are intended for practising propositional reasoning, proof structu
 - `KK/Basic.lean` — the core `World` model, predicates for knights and knaves, and reusable reasoning lemmas;
 - `KK/Island1.lean` — two-inhabitant puzzles;
 - `KK/Island2.lean` — three-inhabitant puzzles;
+- `KK/KnightsKnavesNormals.lean` — a formalisation of the setting where there could be 'normals' (who may lie or be truthful) in addition to knights and knaves;
+- `KK/Island3.lean` — two-inhabitant puzzles with normals.
+- `KK/Island4.lean` — three-inhabitant puzzles with normals.
 - `KK/BalDa.lean` — a formalisation of the `bal`/`da` yes–no language whose word for "yes" is unknown;
-- `KK/Island3.lean` — puzzles using the `bal`/`da` setting.
+- `KK/Island5.lean` — puzzles using the `bal`/`da` setting.
 
 The exercises are to complete the `sorry` proofs.
