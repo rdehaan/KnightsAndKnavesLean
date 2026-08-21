@@ -7,13 +7,13 @@ Authors: Ronald de Haan
 import KK.KnightsKnavesNormals
 
 /-!
-## Island 5
+## Island 4
 
 On this island, there are three inhabitants: `a`, `b` and `c`,
 and all inhabitants are knights or knaves or normals.
 -/
 
-namespace Island5
+namespace Island4
 
 open KnightsKnavesNormals
 
@@ -84,4 +84,4 @@ example
   -- [FILL IN THE PROOF]
   sorry
 
-end Island5
+end Island4

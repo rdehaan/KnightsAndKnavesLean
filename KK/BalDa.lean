@@ -92,5 +92,28 @@ theorem response_da_iff_not
   -- [FILL IN THE PROOF]
   sorry
 
+/--
+Simplify a Bal/Da proof state using all local hypotheses.
+-/
+macro "balda_simp_all" : tactic =>
+  `(tactic|
+    simp_all [answeredWith, wordMeansYes, said_iff])
+
+/--
+Split on which reply word means yes in `L`, and on the supplied reply.
+
+This produces the four possible combinations of the language's yes-word
+and the actual reply, then simplifies each resulting branch with
+`balda_simp_all`.
+
+Example: `balda_cases_simp_all L actual`.
+-/
+macro "balda_cases_simp_all"
+    L:ident actual:Lean.Parser.Tactic.elimTarget : tactic =>
+  `(tactic|
+    cases h_yes : ($L).yesWord <;>
+      cases $actual <;>
+        balda_simp_all)
+
 
 end BalDa

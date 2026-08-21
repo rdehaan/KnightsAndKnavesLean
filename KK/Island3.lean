@@ -7,13 +7,13 @@ Authors: Ronald de Haan
 import KK.BalDa
 
 /-!
-## Island 3
+## Island 5
 
 On this island, the inhabitants answer yes/no questions using the words
 'bal' and 'da' meaning 'yes' and 'no' (but in an unknown order).
 -/
 
-namespace Island3
+namespace Island5
 
 open KnightsAndKnaves
 open BalDa
@@ -124,4 +124,4 @@ example {goldOnIsland : Prop} {actual : Reply}
     sorry
 
 
-end Island3
+end Island5
