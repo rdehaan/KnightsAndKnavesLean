@@ -23,5 +23,5 @@ You can clone this repository and run it using Lean on your local computer.
 However, if you want to have a quick start and play with this in your browser,
 you can do so as follows:
 - Go to [Lean Live](https://live.lean-lang.org/)
-- Copy the contents of `KK/KnightsAndKnaves.lean` and `KK/Island1.lean` into the editor in Lean Live (without the line `import KK.KnightsAndKnaves`).
+- Copy the contents of both `KK/KnightsAndKnaves.lean` and `KK/Island1.lean` into the editor in Lean Live (without the line `import KK.KnightsAndKnaves`).
 - Start proving!
