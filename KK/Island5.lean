@@ -4,84 +4,124 @@ Released under MIT license as described in the file LICENSE.
 Authors: Ronald de Haan
 -/
 
-import KK.KnightsKnavesNormals
+import KK.BalDa
 
 /-!
-## Island 4
+## Island 5
 
-On this island, there are three inhabitants: `a`, `b` and `c`,
-and all inhabitants are knights or knaves or normals.
+On this island, the inhabitants answer yes/no questions using the words
+'bal' and 'da' meaning 'yes' and 'no' (but in an unknown order).
 -/
 
-namespace Island4
+namespace Island5
 
-open KnightsKnavesNormals
+open KnightsAndKnaves
+open BalDa
+open BalDa.Reply
 
-inductive Islander where
-  | a
-  | b
-  | c
+variable {Person : Type}
+variable {p : Person}
 
-open Islander
+/-! Fix an arbitrary world w and language L. -/
+variable (w : World Person)
+variable (L : Language)
 
-/-! Fix an arbitrary world w. -/
-variable (w : World Islander)
-
-/-! Local notation where we fix the world w. -/
+/-! Local notation where we fix the world w and language L. -/
 local notation "isKnight" => isKnight w
 local notation "isKnave" => isKnave w
-local notation "isNormal" => isNormal w
 local notation p " said " Q:200 => said w p Q
-
-local notation p " <rank " q => hasLowerRank w p q
-local notation p " >rank " q => hasHigherRank w p q
-local notation p " =rank " q => hasEqualRank w p q
-
-/-- The three roles are all present among `a`, `b` and `c`. -/
-def oneOfEach : Prop :=
-  (isKnight a ∨ isKnight b ∨ isKnight c) ∧
-  (isKnave a ∨ isKnave b ∨ isKnave c) ∧
-  (isNormal a ∨ isNormal b ∨ isNormal c)
+local notation p " answered " Q:200 " with " word:200 => answeredWith w L p Q word
 
 /--
-If all three roles are present among `a`, `b` and `c`,
-then it is impossible
-that `a` said that `a` is normal,
-that `b` said that `a` is normal,
-and that `c` said that `c` is not normal.
+A person who answers `bal` to "Does `bal` mean yes?" is a knight.
 
-From Smullyan (1978): Puzzle 39.
+From Smullyan (1978): Puzzle 158.
 -/
-example
-    (h_one_each : oneOfEach w)
-    (hA : a said (isNormal a))
-    (hB : b said (isNormal a))
-    (hC : c said (¬ isNormal c)) :
-    isKnave a ∧ isNormal b ∧ isKnight c := by
-  -- Hint: First show that `a` is a knave:
-  -- if `a` were normal, then neither `b` nor `c` could be a knave;
-  -- then show that `b` is normal.
+theorem isKnight_of_answered_bal_to_bal_means_yes
+    (h : answeredWith w L p (wordMeansYes L bal) bal) :
+    isKnight p := by
   -- [FILL IN THE PROOF]
   sorry
 
 /--
-If all three roles are present among `a`, `b` and `c`,
-if `a` said that `b` has higher rank than `c`,
-and if `b` said that `c` has higher rank than `a`,
-then `c` could say that `a` has lower rank than `b`
-(but not the opposite statement).
+Any answer to "Are you a knight?" is the native yes-word.
 
-From Smullyan (1978): Puzzle 43.
+From Smullyan (1978): Puzzle 159.
 -/
-example
-    (h_one_each : oneOfEach w)
-    (hA : a said (b >rank c))
-    (hB : b said (c >rank a)) :
-    c said (a <rank b) ∧ ¬ (c said (a >rank b)) := by
-  -- Hint: first show that `b` is normal;
-  -- then determine the two possible role assignments
-  -- for `a` and `c`, and split on those.
+theorem answer_to_are_you_a_knight_means_yes {actual : Reply}
+    (h : answeredWith w L p (isKnight p) actual) :
+    wordMeansYes L actual := by
+  -- Hint: split on the yes-word and on the actual answer.
   -- [FILL IN THE PROOF]
   sorry
 
-end Island4
+/--
+`answersBalToBalMeansYes w L p` means that under language `L` in world `w`,
+`p` answers `bal` to "Does `bal` mean yes?".
+-/
+def answersBalToBalMeansYes (w : World Person) (L : Language) (p : Person) : Prop :=
+  p answered[w, L] (wordMeansYes L bal) with bal
+
+/--
+After receiving the answer `bal` to "Does `bal` mean yes?", the language remains
+undetermined: the observation is compatible with either choice of yes-word.
+
+From Smullyan (1978): Puzzle 160.
+-/
+example (h : answeredWith w L p (wordMeansYes L bal) bal) :
+    ∃ LBal LDa : Language,
+      LBal.yesWord = bal ∧
+      LDa.yesWord = da ∧
+      answersBalToBalMeansYes w LBal p ∧
+      answersBalToBalMeansYes w LDa p := by
+  -- Hint: first show that the speaker is a knight;
+  -- then use `refine ⟨{yesWord := bal}, {yesWord := da}, rfl, rfl, ?_, ?_⟩`
+  -- [FILL IN THE PROOF]
+  sorry
+
+/--
+The answer to "Does `bal` mean yes?" identifies the speaker's type:
+they answer `bal` exactly when they are a knight, and `da` exactly
+when they are a knave.
+
+From Smullyan (1978): Puzzle 160.
+-/
+example {actual : Reply}
+    (h : answeredWith w L p (wordMeansYes L bal) actual) :
+    (actual = bal ↔ isKnight p) ∧
+    (actual = da ↔ isKnave p) := by
+  -- Hint: split on the yes-word and on the actual answer.
+  -- [FILL IN THE PROOF]
+  sorry
+
+/--
+Any person answers `bal` to the question:
+"Are you a knight if and only if `bal` means yes?"
+
+From Smullyan (1978): Puzzle 161.
+-/
+example {actual : Reply}
+    (h : answeredWith w L p (isKnight p ↔ wordMeansYes L bal) actual) :
+    actual = bal := by
+  -- Hint: split on the yes-word and on the actual answer.
+  -- [FILL IN THE PROOF]
+  sorry
+
+/--
+The answer to the question whether a person would answer `bal` to the
+question of whether there is gold on the island, is `bal` exactly when
+there is gold on the island. (All islanders know whether or not there
+is gold on the island.)
+
+From Smullyan (1978): Puzzle 162.
+-/
+example {goldOnIsland : Prop} {actual : Reply}
+    (h : answeredWith w L p (answeredWith w L p goldOnIsland bal) actual) :
+    goldOnIsland ↔ actual = bal :=
+  -- Hint: use `response_bal_iff`
+  -- [FILL IN THE PROOF]
+  by
+    sorry
+
+
+end Island5

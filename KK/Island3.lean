@@ -4,124 +4,118 @@ Released under MIT license as described in the file LICENSE.
 Authors: Ronald de Haan
 -/
 
-import KK.BalDa
+import KK.KnightsKnavesNormals
 
 /-!
-## Island 5
+## Island 3
 
-On this island, the inhabitants answer yes/no questions using the words
-'bal' and 'da' meaning 'yes' and 'no' (but in an unknown order).
+On this island, there are two inhabitants: `a` and `b`,
+and all inhabitants are knights or knaves or normals.
 -/
 
-namespace Island5
+namespace Island3
 
-open KnightsAndKnaves
-open BalDa
-open BalDa.Reply
+open KnightsKnavesNormals
 
-variable {Person : Type}
-variable {p : Person}
+inductive Islander where
+  | a
+  | b
 
-/-! Fix an arbitrary world w and language L. -/
-variable (w : World Person)
-variable (L : Language)
+open Islander
 
-/-! Local notation where we fix the world w and language L. -/
+/-! Fix an arbitrary world w. -/
+variable (w : World Islander)
+
+/-! Local notation where we fix the world w. -/
 local notation "isKnight" => isKnight w
 local notation "isKnave" => isKnave w
+local notation "isNormal" => isNormal w
 local notation p " said " Q:200 => said w p Q
-local notation p " answered " Q:200 " with " word:200 => answeredWith w L p Q word
 
-/--
-A person who answers `bal` to "Does `bal` mean yes?" is a knight.
+local notation p " <rank " q => hasLowerRank w p q
+local notation p " >rank " q => hasHigherRank w p q
+local notation p " =rank " q => hasEqualRank w p q
 
-From Smullyan (1978): Puzzle 158.
+/-!
+If `a` said that `b` is a knight,
+and if `b` said that `a` is not a knight,
+then there is at least one person that is truthful but not a knight.
+
+From Smullyan (1978): Puzzle 40.
 -/
-theorem isKnight_of_answered_bal_to_bal_means_yes
-    (h : answeredWith w L p (wordMeansYes L bal) bal) :
-    isKnight p := by
+example
+    (hA : a said (isKnight b))
+    (hB : b said (¬ isKnight a)) :
+    (¬ isKnight a ∧ isKnight b) ∨
+    (¬ isKnight b ∧ ¬ isKnight a) := by
+  -- Hint: first prove that `a` is not a knight;
+  -- then split on whether `b` is a knight.
   -- [FILL IN THE PROOF]
   sorry
 
 /--
-Any answer to "Are you a knight?" is the native yes-word.
+If `a` said that `b` is a knight,
+and if `b` said that `a` is a knave,
+then at least one of them is normal.
 
-From Smullyan (1978): Puzzle 159.
+From Smullyan (1978): Puzzle 41.
 -/
-theorem answer_to_are_you_a_knight_means_yes {actual : Reply}
-    (h : answeredWith w L p (isKnight p) actual) :
-    wordMeansYes L actual := by
-  -- Hint: split on the yes-word and on the actual answer.
+example
+    (hA : a said (isKnight b))
+    (hB : b said (isKnave a)) :
+    (isNormal a ∨ isNormal b) := by
+  -- Hint: argue by contradiction, and suppose that neither is normal;
+  -- then split on whether `b` is a knight or a knave.
   -- [FILL IN THE PROOF]
   sorry
 
 /--
-`answersBalToBalMeansYes w L p` means that under language `L` in world `w`,
-`p` answers `bal` to "Does `bal` mean yes?".
--/
-def answersBalToBalMeansYes (w : World Person) (L : Language) (p : Person) : Prop :=
-  p answered[w, L] (wordMeansYes L bal) with bal
+If `a` said that they have lower rank than `b`,
+and `b` said that this is not true,
+then `a` is not a knight and `b` is not a knave,
+and `a` does not have lower rank than `b`.
 
-/--
-After receiving the answer `bal` to "Does `bal` mean yes?", the language remains
-undetermined: the observation is compatible with either choice of yes-word.
-
-From Smullyan (1978): Puzzle 160.
+From Smullyan (1978): Puzzle 42.
 -/
-example (h : answeredWith w L p (wordMeansYes L bal) bal) :
-    ∃ LBal LDa : Language,
-      LBal.yesWord = bal ∧
-      LDa.yesWord = da ∧
-      answersBalToBalMeansYes w LBal p ∧
-      answersBalToBalMeansYes w LDa p := by
-  -- Hint: first show that the speaker is a knight;
-  -- then use `refine ⟨{yesWord := bal}, {yesWord := da}, rfl, rfl, ?_, ?_⟩`
+example
+    (hA : a said (hasLowerRank w a b))
+    (hB : b said (¬ hasLowerRank w a b)) :
+    ¬ hasLowerRank w a b ∧ ¬ isKnight a ∧ ¬ isKnave b := by
+  -- Hint: start with showing that `a` does not have lower rank than `b`
+  -- by splitting on the three possible roles of both.
   -- [FILL IN THE PROOF]
   sorry
 
 /--
-The answer to "Does `bal` mean yes?" identifies the speaker's type:
-they answer `bal` exactly when they are a knight, and `da` exactly
-when they are a knave.
+If `a` said that they have lower rank than `b`,
+and `b` said that this is not true,
+then `a` and `b` could both be normals.
 
-From Smullyan (1978): Puzzle 160.
+From Smullyan (1978): Puzzle 42.
 -/
-example {actual : Reply}
-    (h : answeredWith w L p (wordMeansYes L bal) actual) :
-    (actual = bal ↔ isKnight p) ∧
-    (actual = da ↔ isKnave p) := by
-  -- Hint: split on the yes-word and on the actual answer.
+example : ∃ w : World Islander,
+    a said[w] (hasLowerRank w a b) ∧
+    b said[w] (¬ hasLowerRank w a b) ∧
+    isNormal[w] a ∧ isNormal[w] b := by
+  refine ⟨{ role := fun | a => .normal | b => .normal }, ?_⟩
+  rank_simp_all
+
+/--
+If `a` and `b` are either both normal or both non-normal,
+and if `a` said that `b` is not normal,
+and if `b` said that `a` is not normal,
+then they must both be normal or both be knights.
+
+From Smullyan (1978): Puzzle 44.
+-/
+example
+    (h_iff : isNormal a ↔ isNormal b)
+    (hA : a said (¬ isNormal b))
+    (hB : b said (¬ isNormal a)) :
+    (isNormal a ∧ isNormal b) ∨ (isKnight a ∧ isKnight b) := by
+  -- Hint: split on whether `a` is normal.
   -- [FILL IN THE PROOF]
   sorry
 
-/--
-Any person answers `bal` to the question:
-"Are you a knight if and only if `bal` means yes?"
 
-From Smullyan (1978): Puzzle 161.
--/
-example {actual : Reply}
-    (h : answeredWith w L p (isKnight p ↔ wordMeansYes L bal) actual) :
-    actual = bal := by
-  -- Hint: split on the yes-word and on the actual answer.
-  -- [FILL IN THE PROOF]
-  sorry
-
-/--
-The answer to the question whether a person would answer `bal` to the
-question of whether there is gold on the island, is `bal` exactly when
-there is gold on the island. (All islanders know whether or not there
-is gold on the island.)
-
-From Smullyan (1978): Puzzle 162.
--/
-example {goldOnIsland : Prop} {actual : Reply}
-    (h : answeredWith w L p (answeredWith w L p goldOnIsland bal) actual) :
-    goldOnIsland ↔ actual = bal :=
-  -- Hint: use `response_bal_iff`
-  -- [FILL IN THE PROOF]
-  by
-    sorry
-
-
-end Island5
+end Island3
