@@ -35,7 +35,7 @@ local notation p " answered " Q:200 " with " word:200 => answeredWith w L p Q wo
 /--
 A person who answers `bal` to "Does `bal` mean yes?" is a knight.
 
-From Smullyan (1978): Question 158.
+From Smullyan (1978): Puzzle 158.
 -/
 theorem isKnight_of_answered_bal_to_bal_means_yes
     (h : answeredWith w L p (wordMeansYes L bal) bal) :
@@ -46,7 +46,7 @@ theorem isKnight_of_answered_bal_to_bal_means_yes
 /--
 Any answer to "Are you a knight?" is the native yes-word.
 
-From Smullyan (1978): Question 159.
+From Smullyan (1978): Puzzle 159.
 -/
 theorem answer_to_are_you_a_knight_means_yes {actual : Reply}
     (h : answeredWith w L p (isKnight p) actual) :
@@ -66,7 +66,7 @@ def answersBalToBalMeansYes (w : World Person) (L : Language) (p : Person) : Pro
 After receiving the answer `bal` to "Does `bal` mean yes?", the language remains
 undetermined: the observation is compatible with either choice of yes-word.
 
-From Smullyan (1978): Question 160.
+From Smullyan (1978): Puzzle 160.
 -/
 example (h : answeredWith w L p (wordMeansYes L bal) bal) :
     ∃ LBal LDa : Language,
@@ -84,7 +84,7 @@ The answer to "Does `bal` mean yes?" identifies the speaker's type:
 they answer `bal` exactly when they are a knight, and `da` exactly
 when they are a knave.
 
-From Smullyan (1978): Question 160.
+From Smullyan (1978): Puzzle 160.
 -/
 example {actual : Reply}
     (h : answeredWith w L p (wordMeansYes L bal) actual) :
@@ -98,7 +98,7 @@ example {actual : Reply}
 Any person answers `bal` to the question:
 "Are you a knight if and only if `bal` means yes?"
 
-From Smullyan (1978): Question 161.
+From Smullyan (1978): Puzzle 161.
 -/
 example {actual : Reply}
     (h : answeredWith w L p (isKnight p ↔ wordMeansYes L bal) actual) :
@@ -113,7 +113,7 @@ question of whether there is gold on the island, is `bal` exactly when
 there is gold on the island. (All islanders know whether or not there
 is gold on the island.)
 
-From Smullyan (1978): Question 162.
+From Smullyan (1978): Puzzle 162.
 -/
 example {goldOnIsland : Prop} {actual : Reply}
     (h : answeredWith w L p (answeredWith w L p goldOnIsland bal) actual) :

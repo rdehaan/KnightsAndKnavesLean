@@ -9,7 +9,8 @@ import KK.Basic
 /-!
 ## Island 2
 
-On this island, there are three inhabitants: `a`, `b` and `c`.
+On this island, there are three inhabitants: `a`, `b` and `c`,
+and all inhabitants are either knights or knaves.
 -/
 
 namespace Island2
@@ -32,11 +33,11 @@ local notation "isKnave" => isKnave w
 local notation p " said " Q:200 => said w p Q
 
 /--
-`b` said that `a` said that `a` is a knave.
-`c` said that `b` is a knave.
-Then `b` is a knave and `c` is a knight.
+If `b` said that `a` said that `a` is a knave,
+and if `c` said that `b` is a knave,
+then `b` is a knave and `c` is a knight.
 
-From Smullyan (1978): Question 26.
+From Smullyan (1978): Puzzle 26.
 -/
 example (hB : b said (a said isKnave a))
     (hC : c said isKnave b) :
@@ -46,11 +47,11 @@ example (hB : b said (a said isKnave a))
   sorry
 
 /--
-`b` said that `a` said that `a` is a knave.
-`c` said that `b` is a knave.
-Then `a` could still be a knight.
+If `b` said that `a` said that `a` is a knave,
+and if `c` said that `b` is a knave,
+then `a` could still be a knight.
 
-From Smullyan (1978): Question 26.
+From Smullyan (1978): Puzzle 26.
 -/
 example : ∃ w : World Islander,
       b said[w] (a said[w] (isKnave[w] a)) ∧
@@ -69,11 +70,11 @@ example : ∃ w : World Islander,
   sorry
 
 /--
-`b` said that `a` said that `a` is a knave.
-`c` said that `b` is a knave.
-Then `a` could still be a knave.
+If `b` said that `a` said that `a` is a knave,
+and if `c` said that `b` is a knave,
+then `a` could still be a knave.
 
-From Smullyan (1978): Question 26.
+From Smullyan (1978): Puzzle 26.
 -/
 example : ∃ w : World Islander,
       b said[w] (a said[w] (isKnave[w] a)) ∧
@@ -93,11 +94,11 @@ def exactlyOneKnight : Prop :=
   exactlyOneOfThree (isKnight a) (isKnight b) (isKnight c)
 
 /--
-`b` said that `a` said that exactly one of the three is a knight.
-`c` said that `b` is a knave.
-Then `b` is a knave and `c` is a knight.
+If `b` said that `a` said that exactly one of the three is a knight,
+and if `c` said that `b` is a knave,
+then `b` is a knave and `c` is a knight.
 
-From Smullyan (1978): Question 27.
+From Smullyan (1978): Puzzle 27.
 -/
 example
     (hB : b said (a said (exactlyOneKnight w)))
@@ -110,11 +111,11 @@ example
   sorry
 
 /--
-`b` said that `a` said that exactly one of the three is a knight.
-`c` said that `b` is a knave.
-Then `a` could still be a knight.
+If `b` said that `a` said that exactly one of the three is a knight,
+and if `c` said that `b` is a knave,
+then `a` could still be a knight.
 
-From Smullyan (1978): Question 27.
+From Smullyan (1978): Puzzle 27.
 -/
 example : ∃ w : World Islander,
       b said[w] (a said[w] (exactlyOneKnight w)) ∧
@@ -124,11 +125,11 @@ example : ∃ w : World Islander,
   sorry
 
 /--
-`b` said that `a` said that exactly one of the three is a knight.
-`c` said that `b` is a knave.
-Then `a` could still be a knave.
+If `b` said that `a` said that exactly one of the three is a knight,
+and if `c` said that `b` is a knave,
+then `a` could still be a knave.
 
-From Smullyan (1978): Question 27.
+From Smullyan (1978): Puzzle 27.
 -/
 example : ∃ w : World Islander,
       b said[w] (a said[w] (exactlyOneKnight w)) ∧

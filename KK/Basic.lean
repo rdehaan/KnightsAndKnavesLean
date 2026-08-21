@@ -48,7 +48,11 @@ def isKnave (w : World Person) (p : Person) : Prop :=
   ¬ isKnight w p
 
 /--
-`said w p Q` expresses that person `Q` made the statement `Q` in world `w`.
+`said w p Q` means that it is compatible with the roles in world `w`
+for `p` to have made a statement with content `Q`.
+
+A knight may have said `Q` exactly when `Q` is true;
+a knave may have said `Q` exactly when `Q` is false.
 -/
 def said (w : World Person) (p : Person) (Q : Prop) : Prop :=
   isKnight w p ↔ Q

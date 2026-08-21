@@ -9,7 +9,8 @@ import KK.Basic
 /-!
 ## Island 1
 
-On this island, there are two inhabitants: `a` and `b`.
+On this island, there are two inhabitants: `a` and `b`,
+and all inhabitants are either knights or knaves.
 -/
 
 namespace Island1
@@ -31,9 +32,9 @@ local notation "isKnave" => isKnave w
 local notation p " said " Q:200 => said w p Q
 
 /--
-`a` said that `b` is a knave.
-`b` said that both are knights.
-Then `a` must be a knight and `b` must be a knave.
+If `a` said that `b` is a knave,
+and if `b` said that both are knights,
+then `a` must be a knight and `b` must be a knave.
 -/
 example (hA : a said isKnave b) (hB : b said (isKnight a ∧ isKnight b)) :
     isKnave b ∧ isKnight a := by
@@ -42,10 +43,10 @@ example (hA : a said isKnave b) (hB : b said (isKnight a ∧ isKnight b)) :
   sorry
 
 /--
-`a` said that at least one of `a` and `b` is a knave.
-Then `a` must be a knight and `b` must be a knave.
+If `a` said that at least one of `a` and `b` is a knave,
+then `a` must be a knight and `b` must be a knave.
 
-From Smullyan (1978): Question 28.
+From Smullyan (1978): Puzzle 28.
 -/
 example (hA : a said (isKnave a ∨ isKnave b)) :
     isKnight a ∧ isKnave b := by
@@ -54,10 +55,10 @@ example (hA : a said (isKnave a ∨ isKnave b)) :
   sorry
 
 /--
-`a` said that either `a` is a knave or `b` is a knight.
-Then they must both be knights.
+If `a` said that either `a` is a knave or `b` is a knight,
+then they must both be knights.
 
-From Smullyan (1978): Question 29.
+From Smullyan (1978): Puzzle 29.
 -/
 example (hA : a said (isKnave a ∨ isKnight b)) :
     isKnight a ∧ isKnight b := by
@@ -66,10 +67,10 @@ example (hA : a said (isKnave a ∨ isKnight b)) :
   sorry
 
 /--
-`a` said that `a` is a knave and `b` is a knight.
-Then they must both be knaves.
+If `a` said that `a` is a knave and `b` is a knight,
+then they must both be knaves.
 
-From Smullyan (1978): Question 33.
+From Smullyan (1978): Puzzle 33.
 -/
 example (hA : a said (isKnave a ∧ isKnight b)) :
     isKnave a ∧ isKnave b := by
