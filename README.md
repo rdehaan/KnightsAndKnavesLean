@@ -6,7 +6,7 @@ The exercises are intended for practising propositional reasoning, proof structu
 
 ## Contents
 
-- `KK/Basic.lean` — the core `World` model, predicates for knights and knaves, and reusable reasoning lemmas;
+- `KK/KnightsAndKnaves.lean` — the core `World` model, predicates for knights and knaves, and reusable reasoning lemmas;
 - `KK/Island1.lean` — two-inhabitant puzzles;
 - `KK/Island2.lean` — three-inhabitant puzzles;
 - `KK/KnightsKnavesNormals.lean` — a formalisation of the setting where there could be 'normals' (who may lie or be truthful) in addition to knights and knaves;
@@ -16,3 +16,12 @@ The exercises are intended for practising propositional reasoning, proof structu
 - `KK/Island5.lean` — puzzles using the `bal`/`da` setting.
 
 The exercises are to complete the `sorry` proofs.
+
+## Quickstart
+
+You can clone this repository and run it using Lean on your local computer.
+However, if you want to have a quick start and play with this in your browser,
+you can do so as follows:
+- Go to [Lean Live](https://live.lean-lang.org/)
+- Copy the contents of `KK/KnightsAndKnaves.lean` and `KK/Island1.lean` into the editor in Lean Live (without the line `import KK.KnightsAndKnaves`).
+- Start proving!

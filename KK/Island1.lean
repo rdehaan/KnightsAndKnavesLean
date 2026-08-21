@@ -4,7 +4,7 @@ Released under MIT license as described in the file LICENSE.
 Authors: Ronald de Haan
 -/
 
-import KK.Basic
+import KK.KnightsAndKnaves
 
 /-!
 ## Island 1

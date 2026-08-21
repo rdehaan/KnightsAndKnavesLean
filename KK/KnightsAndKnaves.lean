@@ -115,8 +115,8 @@ theorem said_said_iff : (said w p (said w p Q)) ↔ Q := by
   by_cases hp : isKnight w p <;> simp [hp]
 
 /--
-If `a` said that `a` is a knave or `Q` holds,
-then `a` must be a knight and `Q` must hold
+If `p` said that `p` is a knave or `Q` holds,
+then `p` must be a knight and `Q` must hold
 -/
 theorem knight_and_of_said_knave_or {Q : Prop}
     (h : p said[w] (isKnave[w] p ∨ Q)) :
@@ -126,8 +126,8 @@ theorem knight_and_of_said_knave_or {Q : Prop}
   sorry
 
 /--
-If `a` said that `a` is a knave and `Q` holds,
-then `a` must be a knave and `Q` must not hold.
+If `p` said that `p` is a knave and `Q` holds,
+then `p` must be a knave and `Q` must not hold.
 -/
 theorem knave_and_not_of_said_knave_and {Q : Prop}
     (h : p said[w] (isKnave[w] p ∧ Q)) :

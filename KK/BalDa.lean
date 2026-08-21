@@ -4,7 +4,7 @@ Released under MIT license as described in the file LICENSE.
 Authors: Ronald de Haan
 -/
 
-import KK.Basic
+import KK.KnightsAndKnaves
 
 /-!
 A framework for puzzles with knights and knaves who answer yes/no

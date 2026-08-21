@@ -1,4 +1,4 @@
-import KK.Basic
+import KK.KnightsAndKnaves
 import KK.Island1
 import KK.Island2
 import KK.KnightsKnavesNormals
