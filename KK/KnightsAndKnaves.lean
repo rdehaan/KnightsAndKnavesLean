@@ -106,7 +106,7 @@ theorem knave_iff_not_knight : isKnave w p ↔ ¬ isKnight w p := by
 /-- No person can consistently say of themselves: "I am a knave." -/
 theorem i_am_not_a_knave_impossible (h : said w p (isKnave w p)) : False := by
   -- Hint: first show that `p` is a knave.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -123,7 +123,7 @@ theorem knight_and_of_said_knave_or {Q : Prop}
     (h : p said[w] (isKnave[w] p ∨ Q)) :
     isKnight[w] p ∧ Q := by
   -- Hint: first show that `p` is a knight.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -135,7 +135,7 @@ theorem knave_and_not_of_said_knave_and {Q : Prop}
     (h : p said[w] (isKnave[w] p ∧ Q)) :
     isKnave[w] p ∧ ¬ Q := by
   -- Hint: first show that `p` is a knave.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 

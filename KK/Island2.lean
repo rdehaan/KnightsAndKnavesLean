@@ -43,7 +43,7 @@ example (hB : b said (a said isKnave a))
     (hC : c said isKnave b) :
     isKnave b ∧ isKnight c := by
   -- Hint: first show that `b` is a knave.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -110,7 +110,7 @@ example
   -- Hint: first show that `b` is a knave:
   -- assume that `b` is a knight and derive a contradiction by proving that
   -- `c` then must be a knave and splitting on whether `a` is a knight.
-  -- Difficulty: medium
+  -- Difficulty: medium–hard
   -- [FILL IN THE PROOF]
   sorry
 

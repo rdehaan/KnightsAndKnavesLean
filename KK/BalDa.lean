@@ -76,7 +76,7 @@ theorem response_bal_iff
     actual = bal ↔ Q := by
   -- Hint: split on which word means yes and on `actual`;
   -- in each case, determine whether `p` is a knight.
-  -- Difficulty: medium
+  -- Difficulty: hard
   -- [FILL IN THE PROOF]
   sorry
 

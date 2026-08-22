@@ -85,7 +85,7 @@ example
     ¬ hasLowerRank w a b ∧ ¬ isKnight a ∧ ¬ isKnave b := by
   -- Hint: start with showing that `a` does not have lower rank than `b`
   -- by splitting on the three possible roles of both.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
@@ -118,7 +118,7 @@ example
     (hB : b said (¬ isNormal a)) :
     (isNormal a ∧ isNormal b) ∨ (isKnight a ∧ isKnight b) := by
   -- Hint: split on whether `a` is normal.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 

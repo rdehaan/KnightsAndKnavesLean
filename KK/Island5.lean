@@ -40,7 +40,7 @@ From Smullyan (1978): Puzzle 158.
 theorem isKnight_of_answered_bal_to_bal_means_yes
     (h : answeredWith w L p (wordMeansYes L bal) bal) :
     isKnight p := by
-  -- Difficulty: very easy
+  -- Difficulty: easy
   -- [FILL IN THE PROOF]
   sorry
 

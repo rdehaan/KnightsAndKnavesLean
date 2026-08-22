@@ -39,7 +39,7 @@ then `a` must be a knight and `b` must be a knave.
 example (hA : a said isKnave b) (hB : b said (isKnight a ∧ isKnight b)) :
     isKnave b ∧ isKnight a := by
   -- Hint: first show that `b` is a knave.
-  -- Difficulty: easy
+  -- Difficulty: medium
   -- [FILL IN THE PROOF]
   sorry
 
